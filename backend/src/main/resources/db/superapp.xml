@@ -1,0 +1,47 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="Manos Kordas" id="superapp">
+        <sql>
+            CREATE TABLE IF NOT EXISTS app_role(
+            id VARCHAR(36) DEFAULT (uuid()) PRIMARY KEY,
+            role_name VARCHAR(100) NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS app_user(
+            id VARCHAR(36) DEFAULT (uuid()) PRIMARY KEY,
+            first_name VARCHAR(100) NOT NULL,
+            last_name VARCHAR(100) NOT NULL,
+            username VARCHAR(100) NOT NULL,
+            password CHAR(100) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            status TINYINT(1) NOT NULL,
+            role_id VARCHAR(36) NOT NULL,
+            CONSTRAINT fk_app_user_role FOREIGN KEY (role_id) REFERENCES app_role(id)
+            );
+
+
+            CREATE TABLE IF NOT EXISTS app_product(
+            id VARCHAR(36) DEFAULT (uuid()) PRIMARY KEY,
+            product_name VARCHAR(100) NOT NULL,
+            product_type VARCHAR(100) NOT NULL,
+            product_description VARCHAR(2000) NOT NULL,
+            product_price DECIMAL(7,2) NOT NULL,
+            product_file_path VARCHAR(200) NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS app_user_product(
+            id VARCHAR(36) DEFAULT (uuid()) PRIMARY KEY,
+            app_user_id VARCHAR(36) NOT NULL,
+            app_product_id VARCHAR(36) NOT NULL,
+            payment VARCHAR(100) NOT NULL,
+            purchase_date DATE NOT NULL,
+            CONSTRAINT fk_app_user_product_user FOREIGN KEY (app_user_id) REFERENCES app_user(id),
+            CONSTRAINT fk_app_user_product_product FOREIGN KEY (app_product_id) REFERENCES app_product(id)
+            );
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
