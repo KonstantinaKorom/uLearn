@@ -1,4 +1,7 @@
-package entities;
+package groupproject.superapp.model;
+
+import entities.AppProduct;
+import entities.AppUser;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

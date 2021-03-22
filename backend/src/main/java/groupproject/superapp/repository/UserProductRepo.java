@@ -1,6 +1,6 @@
-package repository;
+package groupproject.superapp.repository;
 
-import entities.AppUserProduct;
+import groupproject.superapp.model.AppUserProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

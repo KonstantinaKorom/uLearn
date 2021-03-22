@@ -1,12 +1,12 @@
-package service;
+package groupproject.superapp.service;
 
-import entities.AppUserProduct;
+import groupproject.superapp.model.AppUserProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import repository.UserProductRepo;
+import groupproject.superapp.repository.UserProductRepo;
 
 import java.util.Date;
 

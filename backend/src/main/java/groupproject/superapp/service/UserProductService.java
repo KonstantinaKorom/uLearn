@@ -1,6 +1,6 @@
-package service;
+package groupproject.superapp.service;
 
-import entities.AppUserProduct;
+import groupproject.superapp.model.AppUserProduct;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Date;
