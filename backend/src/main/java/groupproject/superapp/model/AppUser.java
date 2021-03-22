@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -30,7 +29,7 @@ public class AppUser implements Serializable {
 //    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.AUTO)
 //    private String id = UUID.randomUUID().toString();
 
-    @javax.persistence.Id
+
     @Id
     @Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
