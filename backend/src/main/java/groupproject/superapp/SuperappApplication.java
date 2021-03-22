@@ -1,5 +1,6 @@
 package groupproject.superapp;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,7 @@ public class SuperappApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SuperappApplication.class, args);
+
     }
 
 }
