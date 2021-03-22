@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -25,20 +24,25 @@ import java.util.UUID;
 })
 public class AppUser implements Serializable {
 
+//    @GenericGenerator(
+//            name = "UUID_gen",
+//            strategy = "UUID")
+//    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.AUTO)
+//    private String id = UUID.randomUUID().toString();
+
+    @javax.persistence.Id
     @Id
-    @Column(name = "id", nullable = false, unique = true)  //unique is not required
-    @GenericGenerator(
-            name = "UUID_gen",
-            strategy = "UUID")
-    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.IDENTITY)
-    private String id = UUID.randomUUID().toString();
+    @Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Type(type = "uuid-char")
+    private String userAppId;
 
     @NotEmpty
-    @Column(name = "firstname")
+    @Column(name = "first_name")
     private String firstName;
 
     @NotEmpty
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastName;
 
     @NotEmpty
@@ -58,8 +62,12 @@ public class AppUser implements Serializable {
     private long status;
 
     @NotEmpty
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
+
+
+
 
 
 }
