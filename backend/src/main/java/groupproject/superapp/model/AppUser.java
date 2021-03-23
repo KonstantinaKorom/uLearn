@@ -16,11 +16,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @Table(name = "app_user")
-@NamedQueries({
-        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
-        @NamedQuery(name = "AppUser.findById", query = "SELECT u FROM AppUser u WHERE u.id = :id"),
-        @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
+//        @NamedQuery(name = "AppUser.findById", query = "SELECT u FROM AppUser u WHERE u.id = :id"),
+//        @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
+//})
 public class AppUser implements Serializable {
 
 //    @GenericGenerator(
@@ -34,7 +34,7 @@ public class AppUser implements Serializable {
     @Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "uuid-char")
-    private String userAppId;
+    private String id;
 
     @NotEmpty
     @Column(name = "first_name")
@@ -58,15 +58,12 @@ public class AppUser implements Serializable {
 
     @NotEmpty
     @Column(name = "status")
-    private long status;
+    private byte status;
 
     @NotEmpty
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)
     private AppRole role;
-
-
-
 
 
 }
