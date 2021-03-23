@@ -1,6 +1,6 @@
 package groupproject.superapp.model;
 
-import model.AppUser;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,62 +9,29 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "app_user_product")
+@Table(name = "app_user_product", schema = "superapp")
 public class AppUserProduct implements Serializable {
-
-    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @GeneratedValue(generator="UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @NotNull
     @Column(name = "id")
     private String id;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "payment")
     private String payment;
-    //Basic instead of @NotNull Validation
     @Basic(optional = false)
+    @NotNull
     @Column(name = "purchase_date")
     @Temporal(TemporalType.DATE)
-    /*Temporal data can have DATE, TIME, or TIMESTAMP precision
-    Use the @Temporal annotation to fine tune that.*/
     private Date purchaseDate;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    //TODO check the right cascade type
-    //TODO chech if I need to change fetch type
-    @JoinColumn(name = "app_product_Id", referencedColumnName = "id")
-    private List<AppProduct> appProduct;
-
+    @JoinColumn(name = "app_product_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    //TODO check the right cascade type
-    //TODO chech if I need to change fetch type
-    @JoinColumn(name = "app_user_Id", referencedColumnName = "id")
-    private AppUser appUser;
+    private AppProduct appProductId;
+    @JoinColumn(name = "app_user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private AppUser appUserId;
 
-    public AppUserProduct() {
-    }
-
-    public AppUserProduct(String id) {
-        this.id = id;
-    }
-
-    public AppUserProduct(String id, String payment, Date purchaseDate) {
-        this.id = id;
-        this.payment = payment;
-        this.purchaseDate = purchaseDate;
-    }
-
-    public AppUserProduct(String id, String payment, Date purchaseDate, List<AppProduct> appProduct, AppUser appUser) {
-        this.id = id;
-        this.payment = payment;
-        this.purchaseDate = purchaseDate;
-        this.appProduct = appProduct;
-        this.appUser = appUser;
-    }
 
     public String getId() {
         return id;
@@ -74,6 +41,7 @@ public class AppUserProduct implements Serializable {
         this.id = id;
     }
 
+
     public String getPayment() {
         return payment;
     }
@@ -81,6 +49,7 @@ public class AppUserProduct implements Serializable {
     public void setPayment(String payment) {
         this.payment = payment;
     }
+
 
     public Date getPurchaseDate() {
         return purchaseDate;
@@ -90,54 +59,32 @@ public class AppUserProduct implements Serializable {
         this.purchaseDate = purchaseDate;
     }
 
-    public List<AppProduct> getAppProduct() {
-        return appProduct;
+    public AppProduct getAppProductId() {
+        return appProductId;
     }
 
-    public void setAppProduct(List<AppProduct> appProduct) {
-        this.appProduct = appProduct;
+    public void setAppProductId(AppProduct appProductId) {
+        this.appProductId = appProductId;
     }
 
-    public AppUser getAppUser() {
-        return appUser;
+    public AppUser getAppUserId() {
+        return appUserId;
     }
 
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
+    public void setAppUserId(AppUser appUserId) {
+        this.appUserId = appUserId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AppUserProduct that = (AppUserProduct) o;
+        return Objects.equals(id, that.id) && Objects.equals(payment, that.payment) && Objects.equals(purchaseDate, that.purchaseDate);
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+        return Objects.hash(id, payment, purchaseDate);
     }
-
-    @Override
-    public boolean equals(Object object) {
-
-        if (!(object instanceof AppUserProduct)) {
-            return false;
-        }
-        AppUserProduct other = (AppUserProduct) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Order ")
-                .append("Id= ").append(id).append(",")
-                .append("payment= ").append(payment).append(",")
-                .append("Date= ").append(purchaseDate).append(",")
-                .append("Product=").append(appProduct).append(",")
-                .append("User=").append(appUser);
-
-        return builder.toString();
-    }
-
 }

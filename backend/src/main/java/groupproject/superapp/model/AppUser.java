@@ -63,7 +63,7 @@ public class AppUser implements Serializable {
     @NotEmpty
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)
-    private Role role;
+    private AppRole role;
 
 
 

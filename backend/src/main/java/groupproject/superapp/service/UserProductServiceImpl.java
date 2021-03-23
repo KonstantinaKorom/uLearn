@@ -44,15 +44,15 @@ public class UserProductServiceImpl implements UserProductService {
         return null;
     }
 
-    @Override
-    public AppUserProduct findProductsBySalesAmount() {
-        return null;
-    }
-
-    @Override
-    public AppUserProduct findClientsBySalesAmmount() {
-        return null;
-    }
+//    @Override
+//    public AppUserProduct findProductsBySalesAmount() {
+//        return null;
+//    }
+//
+//    @Override
+//    public AppUserProduct findClientsBySalesAmmount() {
+//        return null;
+//    }
 
     @Override
     public AppUserProduct findClientsByTimesSold() {
@@ -64,10 +64,10 @@ public class UserProductServiceImpl implements UserProductService {
         return null;
     }
 
-    @Override
-    public AppUserProduct updateOrder(AppUserProduct userProduct) {
-        return null;
-    }
+//    @Override
+//    public AppUserProduct updateOrder(AppUserProduct userProduct) {
+//        return null;
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
