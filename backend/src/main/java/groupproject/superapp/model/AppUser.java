@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder //Tosee
 @Table(name = "app_user")
 //@NamedQueries({
 //        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
