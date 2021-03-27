@@ -25,7 +25,7 @@ public interface AppUserProductService extends UserDetailsService {
     List<AppProduct> fetchProductByNumberOfSalesDesc();
 
 
-     List<AppUserProduct> fetchOrdersByDate(Date date);
+     List<AppUserProduct> fetchOrdersByDate();
      //TODO check if I set a certain date or a period of date(from to)
     //TODO check if I need another method to find orders by year or month
 

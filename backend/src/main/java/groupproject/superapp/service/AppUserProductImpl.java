@@ -20,16 +20,14 @@ public class AppUserProductImpl implements AppUserProductService {
     @Autowired
     AppUserProductRepo upRepo;
 
+
     @Override
     public AppUserProduct saveOrder(AppUserProduct appUserProduct) {
-        appUserProduct.setPurchaseDate(LocalDate.now());
         return null;
     }
 
-
     @Override
     public void findOrdersByUserId(String id) {
-        upRepo.findById(id);
 
     }
 
@@ -59,7 +57,7 @@ public class AppUserProductImpl implements AppUserProductService {
     }
 
     @Override
-    public List<AppUserProduct> fetchOrdersByDate(Date date) {
+    public List<AppUserProduct> fetchOrdersByDate() {
         return null;
     }
 
