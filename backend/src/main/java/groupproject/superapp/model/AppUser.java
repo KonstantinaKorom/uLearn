@@ -1,68 +1,67 @@
 package groupproject.superapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder //Tosee
+@Builder
 @Table(name = "app_user")
 //@NamedQueries({
 //        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
 //        @NamedQuery(name = "AppUser.findById", query = "SELECT u FROM AppUser u WHERE u.id = :id"),
 //        @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
 //})
-public class AppUser implements Serializable {
+public class AppUser  {
 
 //    @GenericGenerator(
 //            name = "UUID_gen",
 //            strategy = "UUID")
 //    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.AUTO)
 //    private String id = UUID.randomUUID().toString();
-
-
+//@Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
+//@GeneratedValue(strategy = GenerationType.AUTO)
+//@Type(type = "uuid-char")
     @Id
-    @Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Type(type = "uuid-char")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name="uuid", strategy = "uuid2")
+    @Column(name = "id", unique = true)
     private String id;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "first_name")
-    private String firstName;
+    private String firstname;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "last_name")
-    private String lastName;
+    private String lastname;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "username")
     private String username;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "password")
     private String password;
 
-    @NotEmpty
+    @Email
+    @NonNull
     @Column(name = "email")
     private String email;
 
-    @NotEmpty
+//    @NonNull
     @Column(name = "status")
-    private byte status;
+    private boolean status;
 
-    @NotEmpty
+    @NonNull
     @JoinColumn(name = "role_id", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private AppRole role;
 
 
