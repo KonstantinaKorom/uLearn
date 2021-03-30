@@ -1,68 +1,58 @@
 package groupproject.superapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-@Entity
-@Data
+
+@Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder //Tosee
-@Table(name = "app_user")
-//@NamedQueries({
-//        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
-//        @NamedQuery(name = "AppUser.findById", query = "SELECT u FROM AppUser u WHERE u.id = :id"),
-//        @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
-//})
-public class AppUser implements Serializable {
 
-//    @GenericGenerator(
-//            name = "UUID_gen",
-//            strategy = "UUID")
-//    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.AUTO)
-//    private String id = UUID.randomUUID().toString();
+@Entity
+@Table(name = "app_user")
+public class AppUser implements Serializable {
 
 
     @Id
-    @Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Type(type = "uuid-char")
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "ID")
     private String id;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "first_name")
     private String firstName;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "last_name")
     private String lastName;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "username")
     private String username;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "password")
     private String password;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "email")
     private String email;
 
-    @NotEmpty
+    @NonNull
     @Column(name = "status")
     private byte status;
 
-    @NotEmpty
+    @NonNull
+    @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
     private AppRole role;
 
 

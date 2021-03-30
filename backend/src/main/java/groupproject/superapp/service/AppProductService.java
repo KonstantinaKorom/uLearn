@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface AppProductService {
 
-    AppProduct getAppProductById(String id);
+    AppProduct getAppProductByProductName(String name);
 
     List<AppProduct> getAllAppProducts();
 
-    List<AppProduct> getAllAppProductsByUserId(String id);
 }

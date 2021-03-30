@@ -14,32 +14,32 @@ import java.math.BigDecimal;
 
 
 @Entity
-@Table(name = "APP_PRODUCT")
+@Table(name = "app_product")
 public class AppProduct {
 
     @Id
-    @GeneratedValue(generator = "uuid",strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.IDENTITY)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "ID")
     private String id;
 
     @NonNull
-    @Column(name = "PRODUCT_NAME")
+    @Column(name = "product_name")
     private String productName;
 
     @NonNull
-    @Column(name = "PRODUCT_TYPE")
+    @Column(name = "product_type")
     private String productType;
 
     @NonNull
-    @Column(name = "PRODUCT_DESCRIPTION")
+    @Column(name = "product_description")
     private String productDescription;
 
     @NonNull
-    @Column(name = "PRODUCT_PRICE")
+    @Column(name = "product_price")
     private BigDecimal productPrice;
 
     @NonNull
-    @Column(name = "PRODUCT_FILE_PATH")
+    @Column(name = "product_file_path")
     private String productFilePath;
 }
