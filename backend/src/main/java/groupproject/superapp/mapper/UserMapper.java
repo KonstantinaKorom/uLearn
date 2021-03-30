@@ -7,18 +7,16 @@ import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 
-@Mapper(componentModel = "spring")
-public interface UserMapper {
-
-   // UserMapper MAPPER = Mappers.getMapper(UserMapper.class);
+@Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
+public interface UserMapper extends GeneralMapper<AppUser, UserDto>{
 
 
 //@Mapping(target = "status", ignore = true)
 //@Mapping(target = "role", ignore = true)
-    UserDto convertToDto(AppUser user);
-
-
-    AppUser convertToEntity(UserDto userDto);
+//    UserDto convertToDto(AppUser user);
+//
+//
+//    AppUser convertToEntity(UserDto userDto);
 }
 
 
@@ -42,6 +40,7 @@ public interface UserMapper {
 //}
 
 
+//ModelMapper
 //@Component
 //public class AppUserConverter {
 

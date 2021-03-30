@@ -7,10 +7,7 @@ import groupproject.superapp.model.AppUser;
 import groupproject.superapp.repository.AppRoleRepo;
 import groupproject.superapp.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
     private final UserRepo userRepo;
- //   private final PasswordEncoder passwordEncoder;
+    //   private final PasswordEncoder passwordEncoder;
 
     @Override
     public AppUser findUserByEmail(String email) {
@@ -36,17 +33,13 @@ public class UserServiceImpl implements UserService {
     public AppUser findAppUserByUsername(String username) {
         return userRepo.findAppUserByUsername(username);
     }
-private final AppRoleRepo roleRepo;
-    @Override
-    public void createAccount(UserDto userDto) {
-//        String hashedPassword = passwordEncoder.encode(userDto.getPassword());
-//        AppUser user = userMapper.convertToEntity(userDto);
-//        user.setPassword(hashedPassword);
-//        user.setStatus(true);
-//
-//        user.setRole(roleRepo.findById("1").get());
 
-    }
+    private final AppRoleRepo roleRepo;
+
+//    @Override
+//    public void createAccount(UserDto userDto) {
+//
+//    }
 
 
     @Override
@@ -64,7 +57,6 @@ private final AppRoleRepo roleRepo;
     public void deleteUser(String id) {
         userRepo.findById(id).get().setStatus(false);
     }
-
 
 
 }
