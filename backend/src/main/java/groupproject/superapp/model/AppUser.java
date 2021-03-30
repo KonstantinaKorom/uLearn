@@ -2,45 +2,37 @@ package groupproject.superapp.model;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-@Entity
-@Data
+
+@Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Table(name = "app_user")
-//@NamedQueries({
-//        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
-//        @NamedQuery(name = "AppUser.findById", query = "SELECT u FROM AppUser u WHERE u.id = :id"),
-//        @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
-//})
-public class AppUser  {
 
-//    @GenericGenerator(
-//            name = "UUID_gen",
-//            strategy = "UUID")
-//    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.AUTO)
-//    private String id = UUID.randomUUID().toString();
-//@Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
-//@GeneratedValue(strategy = GenerationType.AUTO)
-//@Type(type = "uuid-char")
+@Entity
+@Table(name = "app_user")
+public class AppUser implements Serializable {
+
+
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name="uuid", strategy = "uuid2")
-    @Column(name = "id", unique = true)
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "ID")
     private String id;
 
     @NonNull
     @Column(name = "first_name")
-    private String firstname;
+    private String firstName;
 
     @NonNull
     @Column(name = "last_name")
-    private String lastname;
+    private String lastName;
 
     @NonNull
     @Column(name = "username")
@@ -50,18 +42,17 @@ public class AppUser  {
     @Column(name = "password")
     private String password;
 
-    @Email
     @NonNull
     @Column(name = "email")
     private String email;
 
-//    @NonNull
+    @NonNull
     @Column(name = "status")
-    private boolean status;
+    private byte status;
 
     @NonNull
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
     @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private AppRole role;
 
 
