@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -36,56 +37,29 @@ public class AppUserProduct implements Serializable {
 
     @NotNull
     @Column(name = "purchase_date")
-    //@Temporal(TemporalType.DATE)
-    //@JsonFormat(pattern="dd/MM/yyyy")
-    //@JsonFormat is not global, only for this class. Have to chack with the team to add a global formatter
-    //Temporal data can have DATE,TIME, or TIMESTAMP precision
-    //Use the @Temporal annotation to fine tune that
-    private LocalDate purchaseDate;
+    @Temporal(TemporalType.DATE)
+    private Date purchaseDate;
 
-    @ManyToMany( cascade = CascadeType.ALL)
-    //TODO check the right cascade type
-    //TODO check if I need to change fetch type
+    @Column(name="app_product_id")
+    private String productId;
+
+    @Column(name="app_user_id")
+    private String userId;
+
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "app_product_Id", referencedColumnName = "id")
-    private List<AppProduct> appProducts;
+    private AppProduct appProducts;
 
-    @ManyToOne
-    //TODO check the right cascade type
-    //TODO check if I need to change fetch type
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "app_user_Id", referencedColumnName = "id")
     private AppUser appUser;
 
-    //TODO
-    //@Transient methods that will return a total amount for that order
-    // and the number of products in it.
-    // Both represent calculated data, so there is no need to store it in the database.
-    /*@Transient
-    public List<AppProduct> getProduct(){
-        return this.appProducts;
-    }
 
-    @Transient
-    public Double getTotalPrice(){
-        return appProducts.productPrice() *  appProducts.size();
-    }
 
-    @Transient
-    public Double getTotalOrderPrice(){
-    double sum=0D;
-    List<AppProduct> orderProducts=getAppProducts();
-    for(AppProduct op:orderProducts){
-    sum+=op.getTotalPrice();
-    }return sum;
-    }
-    @Transient
-    public int getNumberOfProducts(){
-        return this.appProducts.size();
-    }
 
-    @Transient
-    public Double getTotalPrice(){
-        return getAppProduct.* getQuantity();
-    }*/
+
+
+
 
 
 }

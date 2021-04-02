@@ -1,43 +1,41 @@
 package groupproject.superapp.service;
 
+
 import groupproject.superapp.model.AppProduct;
 import groupproject.superapp.model.AppUser;
 import groupproject.superapp.model.AppUserProduct;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.Date;
 import java.util.List;
 
-public interface AppUserProductService extends UserDetailsService {
+public interface AppUserProductService {
+    //user methods
+    //void appProductToCart(AddToCartDTO addToCartDTO, String userId);
 
-     AppUserProduct saveOrder(AppUserProduct appUserProduct);
+    //CartCost listCartit(String userId);
 
-     void findOrdersByUserId(String id);
+    //AppUserProductDTO getDtoFromCart(AppUserProduct appUserProduct);
 
-     void showCart();
+    void showCart(AppUser appuser);
 
-     List<AppUserProduct> fetchOrdersByProductId(String id);
+    AppUserProduct saveOrder(AppUserProduct appUserProduct);
 
-     List<AppProduct> fetchProductByNumberOfSales(int i);
+    void findOrderByUser(AppUser appUser);
+
+    //admin methods
+
+    List<AppUserProduct> fetchProductByProductId(String id);
 
     List<AppProduct> fetchProductByNumberOfSalesAsc();
 
-    List<AppProduct> fetchProductByNumberOfSalesDesc();
+    List<AppProduct> fetchProductByNUmberOfSalesDesc();
 
-
-     List<AppUserProduct> fetchOrdersByDate();
-     //TODO check if I set a certain date or a period of date(from to)
-    //TODO check if I need another method to find orders by year or month
+    List<AppUserProduct> fetchOrdersByDate();
+    //TODO check if i set a certain date or a period of a date (from to)
+    //TODO check if i need another  method to find orders by year or month
 
     List<AppUser> fetchUsersByOrderNumberDesc();
 
     List<AppUser> fetchUsersByOrderNumberAsc();
-
-    List<AppUser> fetchUsersByOrderNumber(int i);
-
-
-
-
 
 
 
