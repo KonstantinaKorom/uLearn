@@ -40,11 +40,11 @@ public class AppUserProduct implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date purchaseDate;
 
-    @Column(name="app_product_id")
-    private String productId;
+   // @Column(name="app_product_id")
+   // private String productId;
 
-    @Column(name="app_user_id")
-    private String userId;
+    //@Column(name="app_user_id")
+   // private String userId;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "app_product_Id", referencedColumnName = "id")
