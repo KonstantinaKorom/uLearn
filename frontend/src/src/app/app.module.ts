@@ -1,22 +1,29 @@
-import { MenubarModule } from 'primeng/menubar';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { AppRoutingModule } from "./app-routing.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from "@angular/common/http";
+import { AppComponent } from "./app.component";
+
+
+import { UserService } from "./user.service";
+import { AlertService } from "./alert.service";
+
+import { AlertComponent } from './alert/alert.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent,  RegisterComponent, AlertComponent, LoginComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MenubarModule,
-    NgbModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [UserService,AlertService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

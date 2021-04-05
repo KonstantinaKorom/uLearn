@@ -2,32 +2,27 @@ package groupproject.superapp.model;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Collections;
 
-@Entity
-@Data
+@Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Table(name = "app_user")
-//@NamedQueries({
-//        @NamedQuery(name = "AppUser.findAll", query = "SELECT u FROM AppUser u"),
-//        @NamedQuery(name = "AppUser.findById", query = "SELECT u FROM AppUser u WHERE u.id = :id"),
-//        @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
-//})
-public class AppUser implements Serializable {
 
-//    @GenericGenerator(
-//            name = "UUID_gen",
-//            strategy = "UUID")
-//    @GeneratedValue(generator = "UUID_gen", strategy = GenerationType.AUTO)
-//    private String id = UUID.randomUUID().toString();
-//@Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)", insertable = false, updatable = false)
-//@GeneratedValue(strategy = GenerationType.AUTO)
-//@Type(type = "uuid-char")
+
+@Entity
+@Table(name = "app_user")
+public class AppUser implements UserDetails {
+
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name="uuid", strategy = "uuid2")
@@ -50,19 +45,50 @@ public class AppUser implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @Email
+    
     @NonNull
     @Column(name = "email")
     private String email;
 
     @NonNull
     @Column(name = "status")
-    private boolean status;
+    private boolean status = false;
 
     @NonNull
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
-    @ManyToOne
-    private AppRole role;
+    @Builder.Default
+    private AppRole role = AppRole.USER;
+
+    @Builder.Default
+    private Boolean locked = false;
+
+    @Builder.Default
+    private Boolean enabled = false;
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(simpleGrantedAuthority);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return !locked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
 }

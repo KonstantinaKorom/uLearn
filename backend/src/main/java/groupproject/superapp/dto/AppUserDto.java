@@ -14,7 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto implements Serializable {
+public class AppUserDto implements Serializable {
 
     private String id;
     private String firstname;
