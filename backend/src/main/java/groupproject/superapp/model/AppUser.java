@@ -2,14 +2,8 @@ package groupproject.superapp.model;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Collections;
 
 @Getter
 @Setter
@@ -20,7 +14,7 @@ import java.util.Collections;
 
 @Entity
 @Table(name = "app_user")
-public class AppUser implements UserDetails {
+public class AppUser {
 
 
     @Id
@@ -31,11 +25,11 @@ public class AppUser implements UserDetails {
 
     @NonNull
     @Column(name = "first_name")
-    private String firstname;
+    private String firstName;
 
     @NonNull
     @Column(name = "last_name")
-    private String lastname;
+    private String lastName;
 
     @NonNull
     @Column(name = "username")
@@ -55,40 +49,11 @@ public class AppUser implements UserDetails {
     private boolean status = false;
 
     @NonNull
-    @Builder.Default
-    private AppRole role = AppRole.USER;
-
-    @Builder.Default
-    private Boolean locked = false;
-
-    @Builder.Default
-    private Boolean enabled = false;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private AppRole appRole;
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.name());
-        return Collections.singletonList(simpleGrantedAuthority);
-    }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
 }

@@ -7,7 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AppProductRepo extends JpaRepository<AppProduct, String> {
 
-   // AppProduct findByDescriptionContaining(String productName);
-
-    AppProduct findAppProductByProductName(String name);
 }

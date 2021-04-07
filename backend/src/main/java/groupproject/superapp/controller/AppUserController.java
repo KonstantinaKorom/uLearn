@@ -1,16 +1,17 @@
 package groupproject.superapp.controller;
 
 
+import groupproject.superapp.dto.AppUserDto;
+import groupproject.superapp.mapper.UserMapper;
+import groupproject.superapp.model.AppRole;
 import groupproject.superapp.model.AppUser;
-import groupproject.superapp.model.ConfirmationToken;
-import groupproject.superapp.repository.ConfirmationTokenRepository;
+import groupproject.superapp.service.AppRoleService;
 import groupproject.superapp.service.AppUserService;
-import groupproject.superapp.service.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @Component
 @AllArgsConstructor
@@ -19,31 +20,18 @@ import java.util.Optional;
 public class AppUserController {
 
     private final AppUserService userService;
-    private final ConfirmationTokenService confirmationTokenService;
-    private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final UserMapper userMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final AppRoleService roleService;
 
-//    @PostMapping("/register")
-//    public ResponseEntity saveNewUser(@RequestBody AppUser appUser){
-//        userService.saveAppUser(appUser);
-//        return ResponseEntity.ok(appUser);
-//    }
+    @PostMapping()
+    public ResponseEntity saveNewUser(@RequestBody AppUserDto userDto) {
 
+        AppUser appUser = userMapper.toEntity(userDto);
+        appUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        appUser.setAppRole(roleService.getAppRoleByRoleName("USER"));
+        userService.saveAppUser(appUser);
+        return ResponseEntity.ok(userDto);
 
-    @PostMapping("/register")
-    String signUp(AppUser user) {
-
-        userService.saveAppUser(user);
-
-        return "redirect:/login";
-    }
-
-    @GetMapping("/confirm")
-    String confirmMail(@RequestParam("token") String token) {
-
-        Optional<ConfirmationToken> optionalConfirmationToken = confirmationTokenService.findById(token.);
-
-        optionalConfirmationToken.ifPresent(userService::confirmUser);
-
-        return "/login";
     }
 }

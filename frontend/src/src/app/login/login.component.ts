@@ -1,43 +1,57 @@
-import { AuthenticationService } from './../authentication.service';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from "./../authentication.service";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AlertService } from '../alert.service';
+
 
 
 @Component({
-    selector: 'login-form',
-    templateUrl: 'login.component.html',
-    styleUrls: ['./login.component.scss']
+  selector: "login-form",
+  templateUrl: "login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
-
 export class LoginComponent implements OnInit {
-   loginForm!: FormGroup;
-    submitted = false;
-   
-   constructor(
+  loginForm!: FormGroup;
+  submitted = false;
+  loginFailed = false;
+ 
+  constructor(
+    private authService: AuthenticationService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router){}
+    private router: Router
+  ) {
+  
+  }
 
-    ngOnInit(): void {
-      this.loginForm = this.formBuilder.group({
-        username: [null, Validators.required],
-        password: [null, Validators.required]
-      })
-    }
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: [null, Validators.required],
+      password: [null, Validators.required],
+    });
+  }
 
-    get formControl() {
-        return this.loginForm.controls;
-      }
+  get formControl() {
+    return this.loginForm.controls;
+  }
 
-      onLogin(): void {
-        // console.log(this.loginForm.value);
-        this.submitted = true;
-        if (this.loginForm.valid) {
-          console.log(this.loginForm.value);
-          localStorage.setItem("user-Data", JSON.stringify(this.loginForm.value));
-          this.router.navigate(["/"]);
+  onLogin(): void {
+    const formData = new FormData();
+    formData.append("username", this.loginForm.value.username);
+    formData.append("password", this.loginForm.value.password);
+    this.submitted = true;
+    if (this.loginForm.valid) {
+      this.authService.login(formData).subscribe(
+        (res) => {
+         this.router.navigateByUrl("/home");
+        },
+        (error) => {
+          this.loginFailed = true;
         }
-      }
+      );
+    }
+  }
+
+  redirect() {
+    this.router.navigate(['./register']);
+  }
 }

@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 @Mapper(
         componentModel = "spring",
         builder = @Builder(disableBuilder = true))
-public interface AppProductMapper extends GeneralMapper<AppProduct, AppProductDto> {
+public interface ProductMapper extends GeneralMapper<AppProduct, AppProductDto> {
 
 
 }

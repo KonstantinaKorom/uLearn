@@ -1,11 +1,10 @@
-import { AlertService } from '../alert.service';
+import { AlertService } from "../alert.service";
 import { Component, OnInit } from "@angular/core";
 import { Validators } from "@angular/forms";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "../user";
 import { UserService } from "../user.service";
-
 
 @Component({
   selector: "register-form",
@@ -39,37 +38,21 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  // onSubmit() {
-  //   this.submitted = true;
-  //   this.loading = true;
-  //   if (this.registerForm.valid) {
-  //     this.userService.save(this.user).subscribe(
-  //       data => {
-  //         this.alertService.success('Registration successful', true);
-  //         this.router.navigate(['/login']);
-  //       },
-  //       (error) => {
-  //         this.alertService.error(error);
-  //         this.loading = false;
-  //       }
-  //     );
-  //   }
-  // }
-
-  
-  register() {
-    this.loading = true;
-    this.userService.create(this.model)
-        .subscribe(
-            data => {
-                // set success message and pass true paramater to persist the message after redirecting to the login page
-                this.alertService.success('Registration successful', true);
-                this.router.navigate(['/login']);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.valid) {
+      this.loading = true;
+      this.userService.create(this.registerForm.value).subscribe(
+        (data) => {
+          // this.alertService.success('Registration successful', true);
+          // this.router.navigate(['/login']);
+          console.log(this.registerForm.value);
+        },
+        (error) => {
+         // this.alertService.error(error);
+          this.loading = false;
+        }
+      )
+    }
+  }
 }
-}
-

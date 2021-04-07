@@ -4,23 +4,23 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
-    moduleId: module.id,
+    selector:'home',
     templateUrl: 'home.component.html'
 })
 
 export class HomeComponent implements OnInit {
-    currentUser: User;
+    currentUser!: User;
     users: User[] = [];
 
     constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
         this.loadAllUsers();
     }
 
-    deleteUser(id: string) {
+    deleteUser(id: any) {
         this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
     }
 
