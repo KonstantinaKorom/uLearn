@@ -3,8 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-
-
 @Component({
   selector: "login-form",
   templateUrl: "login.component.html",
@@ -14,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   loginFailed = false;
- 
+hide = true;
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -49,6 +47,8 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+
+    // this.authService.setLoggedIn(true); // HERE ******************************
   }
 
   redirect() {
