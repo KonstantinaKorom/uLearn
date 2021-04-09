@@ -7,7 +7,8 @@ const api = 'api';
 export const environment = {
   production: false,
 
-  users: api + '/users'
+  users: api + '/users',
+  products: api + '/products'
 };
 
 /*

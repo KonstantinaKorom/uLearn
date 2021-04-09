@@ -1,4 +1,3 @@
-import { AlertService } from '../alert.service';
 import { Component, OnInit } from "@angular/core";
 import { Validators } from "@angular/forms";
 import { FormBuilder, FormGroup } from "@angular/forms";
@@ -22,7 +21,6 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -44,12 +42,10 @@ export class RegisterComponent implements OnInit {
       this.loading = true;
       this.userService.create(this.registerForm.value).subscribe(
         (data) => {
-          // this.alertService.success('Registration successful', true);
           // this.router.navigate(['/login']);
           console.log(this.registerForm.value);
         },
         (error) => {
-         // this.alertService.error(error);
           this.loading = false;
         }
       )
