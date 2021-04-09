@@ -1,10 +1,10 @@
-import { AlertService } from "../alert.service";
+import { AlertService } from '../alert.service';
 import { Component, OnInit } from "@angular/core";
 import { Validators } from "@angular/forms";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "../user";
-import { UserService } from "../user.service";
+import { UserService } from '../user.service';
 
 @Component({
   selector: "register-form",

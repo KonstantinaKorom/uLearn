@@ -9,7 +9,7 @@ import groupproject.superapp.service.AppRoleService;
 import groupproject.superapp.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +21,14 @@ public class AppUserController {
 
     private final AppUserService userService;
     private final UserMapper userMapper;
-   // private final BCryptPasswordEncoder passwordEncoder;
+   private final BCryptPasswordEncoder passwordEncoder;
     private final AppRoleService roleService;
 
     @PostMapping()
     public ResponseEntity saveNewUser(@RequestBody AppUserDto userDto) {
 
         AppUser appUser = userMapper.toEntity(userDto);
-       // appUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        appUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
         appUser.setAppRole(roleService.getAppRoleByRoleName("USER"));
         userService.saveAppUser(appUser);
         return ResponseEntity.ok(userDto);

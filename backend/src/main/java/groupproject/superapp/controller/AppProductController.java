@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "api/product")
+@RequestMapping(value = "api/products")
 public class AppProductController {
 
     private final AppProductService productService;
@@ -27,21 +27,21 @@ public class AppProductController {
         return productDto;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/product")
     public List<AppProductDto> getAllProducts() {
         List<AppProduct> products = productService.getAllAppProducts();
         List<AppProductDto> productsDto = productMapper.toDto(products);
         return productsDto;
     }
 
-    @GetMapping("/products/{type}")
+    @GetMapping("/product/{type}")
     public List<AppProductDto> getAllProductsByProductType(@PathVariable(value = "type") String product_type) {
         List<AppProduct> products = productService.getAllProductsByProductType(product_type);
         List<AppProductDto> productsDto = productMapper.toDto(products);
         return productsDto;
     }
 
-    @GetMapping("products/price/{price}")
+    @GetMapping("product/price/{price}")
     public List<AppProductDto> getAppProductsByProductPriceIsGreaterThan(@PathVariable(value = "price") BigDecimal price) {
         List<AppProduct> products = productService.getAppProductsByProductPriceIsGreaterThan(price);
         List<AppProductDto> productsDto = productMapper.toDto(products);
