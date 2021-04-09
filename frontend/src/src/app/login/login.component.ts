@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   loginFailed = false;
-hide = true;
+   hide = true;
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,

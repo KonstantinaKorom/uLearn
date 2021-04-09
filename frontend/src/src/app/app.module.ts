@@ -17,7 +17,6 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './authentication.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
@@ -28,10 +27,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
   ],
   providers: [UserService, AlertService, AuthenticationService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  
 })
 export class AppModule {}

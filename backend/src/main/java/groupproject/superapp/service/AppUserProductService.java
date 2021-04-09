@@ -1,11 +1,11 @@
 package groupproject.superapp.service;
 
 import groupproject.superapp.model.AppUserProduct;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface AppUserProductService extends UserDetailsService {
+public interface AppUserProductService {
 
     //user methods
     //The commented methods with not happen at back end but at front end.

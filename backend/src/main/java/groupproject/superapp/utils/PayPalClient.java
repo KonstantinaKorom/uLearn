@@ -17,11 +17,11 @@ public class PayPalClient {
     String clientId = "AbS5snMzQ0GsJpn3tPsN9m5g1IGuBuc4C5w9_VhWVjyPlMTaLr7Dh9CigrQPhLtdaZgimcSXy0ftklaM";
     String clientSecret = "EPXrTYY33Dm8e1_pJabnx-BRsJf9_2ZS9_xSh8CwqvnCu4vchsiss6zyc7l61VeLa0AX758eKnmYD6VU";
 
-    public Map<String, Object> createPayment(String sum){
+    public Map<String, Object> createPayment(String price){
         Map<String, Object> response = new HashMap<String, Object>();
         Amount amount = new Amount();
         amount.setCurrency("USD");
-        amount.setTotal(sum);
+        amount.setTotal(price);
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
         List<Transaction> transactions = new ArrayList<Transaction>();

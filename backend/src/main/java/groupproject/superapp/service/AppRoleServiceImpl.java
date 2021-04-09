@@ -15,4 +15,5 @@ public class AppRoleServiceImpl implements AppRoleService{
     public AppRole getAppRoleByRoleName(String roleName) {
         return appRoleRepository.findAppRoleByRoleName(roleName);
     }
+
 }

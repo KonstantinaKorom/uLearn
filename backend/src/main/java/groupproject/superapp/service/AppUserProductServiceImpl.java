@@ -3,8 +3,8 @@ package groupproject.superapp.service;
 
 import groupproject.superapp.model.AppUserProduct;
 import groupproject.superapp.repository.AppUserProductRepo;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class AppUserProductServiceImpl implements AppUserProductService{
+public class AppUserProductServiceImpl implements  AppUserProductService{
 
     private AppUserProductRepo appUserProductRepo;
 
@@ -29,9 +29,9 @@ public class AppUserProductServiceImpl implements AppUserProductService{
         return this.appUserProductRepo.save(appUserProduct);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+//        return null;
+//    }
 }
 
