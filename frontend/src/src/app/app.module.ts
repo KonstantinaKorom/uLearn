@@ -1,3 +1,4 @@
+import { ChatComponent } from './chat/chat.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,12 +26,12 @@ import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
-import {ProductsComponent} from "./products/products.component";
+import {ProductsComponent} from './products/products.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,  RegisterComponent, LoginComponent, HomeComponent, ProductsComponent],
+  declarations: [AppComponent,  RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,6 +51,6 @@ import {ProductsComponent} from "./products/products.component";
   ],
   providers: [UserService, AuthenticationService, ProductService],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule {}
