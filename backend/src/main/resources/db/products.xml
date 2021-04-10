@@ -1,0 +1,24 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="Manos Kordas" id="products">
+        <sql>
+            INSERT INTO app_product (id, product_name, product_type, product_description, product_price, product_file_path)
+            VALUES ('615d0a44-9815-11eb-b30c-98f5032ddbc4', 'An Introduction to Mathematical Cryptography', 'book', 'An Introduction to Mathematical Cryptography e-book. Excellent and accessible intro to the subject. It presents theory, many examples and exercises. Language: Greek, Author: Konstantina Koromila', '20.00','sss' );
+
+            INSERT INTO app_product (id, product_name, product_type, product_description, product_price, product_file_path)
+            VALUES ('8c4339cd-9818-11eb-b30c-98f5032ddbc4', 'Differential Geometry of Curves and Surfaces', 'book', 'One of the most widely used texts in its field, this volume introduces the differential geometry of curves and surfaces in both local and global aspects. The presentation departs from the traditional approach with its more extensive use of elementary linear algebra and its emphasis on basic geometrical facts rather than machinery or random details. Many examples and exercises enhance the clear, well-written exposition, along with hints and answers to some of the problems. Language: Greek, Author: Manos Kordas', '25.00','sss' );
+
+            INSERT INTO app_product (id, product_name, product_type, product_description, product_price, product_file_path)
+            VALUES ('8c43baab-9818-11eb-b30c-98f5032ddbc4', 'Astrophysics: Stars and Galaxies', 'book', 'This Book introduces the subject of Astrophysics To Honours And Post-Graduate Students Of Physics, without the necessity of their being familiar with all the practical details of modern astronomical techniques of observation and deduction of data. The emphasis is on showing how an application of the commonly known laws of physics gives us important information about the properties of celestial objects and phenomena. Language: Greek, Author: Kalliopi Bakogianni', '30.00','sss' );
+
+            INSERT INTO app_product (id, product_name, product_type, product_description, product_price, product_file_path)
+            VALUES ('8c43f593-9818-11eb-b30c-98f5032ddbc4', 'AutoCad for Begginers', 'video', 'Are you frustrated trying to teach yourself AutoCAD?! This course will quickly allow you to start using AutoCAD and getting paid for your AutoCAD skills.', '20.00','sss' );
+
+            INSERT INTO app_product (id, product_name, product_type, product_description, product_price, product_file_path)
+            VALUES ('8c443caf-9818-11eb-b30c-98f5032ddbc4', '3D Printing quide', 'video', 'In this video training, you learn how to master 3D printing and move from ideas to objects! Language: Greek, Subtitles: English, Spanish, Creator: George Sarlas', '30.00','sss' );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
