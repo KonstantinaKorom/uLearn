@@ -1,5 +1,5 @@
 import { User } from './user';
-import { Product } from './interface/product';
+import { Product } from './product';
 export interface Userproducts{
 
     products: Product[];

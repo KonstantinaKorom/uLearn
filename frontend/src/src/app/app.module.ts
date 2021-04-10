@@ -7,15 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ProductService } from './product.service';
+import { ProductService } from './service/product.service';
 
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './service/authentication.service';
 
 
 import {DataViewModule} from 'primeng/dataview';

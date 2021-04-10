@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { User } from '../models/user';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: "register-form",

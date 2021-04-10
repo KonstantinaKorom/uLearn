@@ -1,6 +1,6 @@
-import { ProductService } from "./../product.service";
+import { ProductService } from "../service/product.service";
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../product";
+import { Product } from "../models/product";
 import { SelectItem } from "primeng/api";
 import { PrimeNGConfig } from "primeng/api";
 
