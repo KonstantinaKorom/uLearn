@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Validators } from "@angular/forms";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { User } from "../user";
+import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
   selector: "register-form",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"],
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   user!: User;
@@ -32,10 +32,12 @@ export class RegisterComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
     });
   }
+  // tslint:disable-next-line: typedef
   get registerFormControls() {
     return this.registerForm.controls;
   }
 
+  // tslint:disable-next-line: typedef
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.valid) {
@@ -50,5 +52,10 @@ export class RegisterComponent implements OnInit {
         }
       )
     }
+  }
+
+  // tslint:disable-next-line: typedef
+  redirect() {
+    this.router.navigate(['./login']);
   }
 }
