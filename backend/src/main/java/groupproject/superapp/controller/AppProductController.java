@@ -27,21 +27,21 @@ public class AppProductController {
         return productDto;
     }
 
-    @GetMapping("/products")
+    @GetMapping
     public List<AppProductDto> getAllProducts() {
         List<AppProduct> products = productService.getAllAppProducts();
         List<AppProductDto> productsDto = productMapper.toDto(products);
         return productsDto;
     }
 
-    @GetMapping("/products/{type}")
+    @GetMapping("/{type}")
     public List<AppProductDto> getAllProductsByProductType(@PathVariable(value = "type") String product_type) {
         List<AppProduct> products = productService.getAllProductsByProductType(product_type);
         List<AppProductDto> productsDto = productMapper.toDto(products);
         return productsDto;
     }
 
-    @GetMapping("product/price/{price}")
+    @GetMapping("price/{price}")
     public List<AppProductDto> getAppProductsByProductPriceIsGreaterThan(@PathVariable(value = "price") BigDecimal price) {
         List<AppProduct> products = productService.getAppProductsByProductPriceIsGreaterThan(price);
         List<AppProductDto> productsDto = productMapper.toDto(products);
