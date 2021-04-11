@@ -1,4 +1,4 @@
-import { ChatMessageDto } from '../models/chatMessageDto';
+import { ChatMessageDto } from '../interfaces/chatMessageDto';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { WebSocketService } from '../service/web-socket.service';

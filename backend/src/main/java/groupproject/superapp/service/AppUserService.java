@@ -10,4 +10,5 @@ public interface AppUserService {
    void saveAppUser(AppUser appUser);
 
    AppUser getAppUserByUsername(String username);
+
 }

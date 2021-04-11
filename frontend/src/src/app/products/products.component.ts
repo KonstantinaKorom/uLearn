@@ -1,6 +1,6 @@
 import {ProductService} from "../service/product.service";
 import {Component, OnInit} from "@angular/core";
-import {Product} from "../models/product";
+import {Product} from "../interfaces/product";
 import {SelectItem} from "primeng/api";
 import {PrimeNGConfig} from "primeng/api";
 
@@ -15,9 +15,11 @@ export class ProductsComponent implements OnInit {
 
     sortOptions: SelectItem[];
 
-    sortOrder: number;
+    sortKey: string;
 
     sortField: string;
+    
+    sortOrder: number;
 
     constructor(
         private productService: ProductService,

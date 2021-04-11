@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../models/user';
+import { User } from '../interfaces/user';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -40,22 +40,23 @@ export class RegisterComponent implements OnInit {
   // tslint:disable-next-line: typedef
   onSubmit() {
     this.submitted = true;
-    if (this.registerForm.valid) {
+    if (this.registerForm.invalid) {
+      return;
+    }
       this.loading = true;
       this.userService.create(this.registerForm.value).subscribe(
         (data) => {
-          // this.router.navigate(['/login']);
+          
+          this.router.navigate(['/login']);
           console.log(this.registerForm.value);
         },
         (error) => {
           this.loading = false;
         }
-      )
-    }
+      ) 
   }
 
-  // tslint:disable-next-line: typedef
   redirect() {
-    this.router.navigate(['./login']);
+  this.router.navigate(['/login']);
   }
 }

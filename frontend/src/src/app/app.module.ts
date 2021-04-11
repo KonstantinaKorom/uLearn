@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { ChatComponent } from './chat/chat.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,12 +31,15 @@ import {ProductsComponent} from './products/products.component';
 import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {ContactComponent} from './contact/contact.component';
-
+import {ToastModule} from 'primeng/toast';
+import { AdminComponent } from './admin/admin.component';
+import {MenubarModule} from 'primeng/menubar';
+import {ContactComponent} from "./contact/contact.component";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent, HeaderComponent, FooterComponent, ContactComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent, HeaderComponent, FooterComponent, AdminComponent, ContactComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,8 +56,10 @@ import {ContactComponent} from './contact/contact.component';
     RippleModule,
     RatingModule,
     FormsModule,
+    ToastModule,
+    MenubarModule
   ],
-  providers: [UserService, AuthenticationService, ProductService],
+  providers: [UserService, AuthenticationService, ProductService, AuthGuard],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 

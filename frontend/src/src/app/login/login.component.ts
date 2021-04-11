@@ -2,6 +2,7 @@ import { AuthenticationService } from "../service/authentication.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ILogin } from "../interfaces/Login";
 
 @Component({
   selector: "login-form",
@@ -9,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
+  model: ILogin = { userid: "admnin", password: "admin@123" }  
   loginForm!: FormGroup;
+  message: string;
   submitted = false;
   loginFailed = false;
 hide = true;
@@ -47,6 +50,7 @@ hide = true;
         }
       );
     }
+    
 
 
   }

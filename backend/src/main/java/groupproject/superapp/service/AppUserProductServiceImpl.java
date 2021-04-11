@@ -29,6 +29,8 @@ public class AppUserProductServiceImpl implements  AppUserProductService{
         return this.appUserProductRepo.save(appUserProduct);
     }
 
+
+
 //    @Override
 //    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 //        return null;

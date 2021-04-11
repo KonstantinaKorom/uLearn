@@ -6,9 +6,7 @@ import groupproject.superapp.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
 
 
-
 import org.springframework.stereotype.Service;
-
 
 
 @AllArgsConstructor
@@ -24,10 +22,9 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public AppUser getAppUserByUsername(String username){
+    public AppUser getAppUserByUsername(String username) {
         return appUserRepository.findAppUserByUsername(username);
     }
-
 
 
 }
