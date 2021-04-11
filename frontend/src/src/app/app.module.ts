@@ -27,11 +27,14 @@ import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
 import {ProductsComponent} from './products/products.component';
+import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,  RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent, HeaderComponent, FooterComponent, ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,6 +54,7 @@ import {ProductsComponent} from './products/products.component';
   ],
   providers: [UserService, AuthenticationService, ProductService],
   bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 
 })
 export class AppModule {}
