@@ -7,6 +7,7 @@ import groupproject.superapp.model.AppUser;
 import groupproject.superapp.service.AppRoleService;
 import groupproject.superapp.service.AppUserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
+@Slf4j
 @Component
 @AllArgsConstructor
 @RestController
@@ -30,11 +31,12 @@ public class AppUserController {
 
     @PostMapping()
     public ResponseEntity saveNewUser(@RequestBody AppUserDto userDto) {
-
+        log.info("get userDto: {}", userDto);
         AppUser appUser = userMapper.toEntity(userDto);
         appUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
         appUser.setAppRole(roleService.getAppRoleByRoleName("USER"));
         userService.saveAppUser(appUser);
+        log.info("saved User: {}", appUser);
         return ResponseEntity.ok(userDto);
 
     }

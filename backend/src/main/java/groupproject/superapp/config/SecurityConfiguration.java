@@ -56,23 +56,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/products").hasRole("USER")
                 .antMatchers("/register").permitAll()
-                .antMatchers("/home").hasRole("USER")
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .usernameParameter("username") //
-                .passwordParameter("password")
-                .successHandler(successHandler())
-                .failureHandler(failureHandler())
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/home");
+                .logoutSuccessUrl("/home")
+                .permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .successHandler(successHandler())
+                .failureHandler(failureHandler())
+                .permitAll();
+
     }
+
     private AuthenticationSuccessHandler successHandler() {
         return new AuthenticationSuccessHandler() {
             @Override
