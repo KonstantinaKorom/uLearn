@@ -30,11 +30,12 @@ import {ProductsComponent} from './products/products.component';
 import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
+import {ContactComponent} from './contact/contact.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent, HeaderComponent, FooterComponent, ],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, HomeComponent, ProductsComponent, ChatComponent, HeaderComponent, FooterComponent, ContactComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

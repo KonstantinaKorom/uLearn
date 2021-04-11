@@ -3,6 +3,13 @@
     box-sizing: border-box;
   }
 
+  h1,h3{display: table; 
+    margin: 0px auto 0px auto;
+    padding:5px;
+    background-color:yellow;
+    color:black;
+    text-shadow: 2px 2px rgb(224, 223, 168);
+  }
 
   h2 {
     font-size: 3em;
@@ -84,6 +91,7 @@
   .footer-basic .social>a:hover {
     opacity: 0.9;
   }
+
 </style>
 
 <app-header> </app-header>
@@ -92,6 +100,7 @@
   <div class="row">
     <div>
       <h1 style="text-align: center; ">You only have to know one thing!</h1>
+      
       <h3 style="text-align: center; ">With us you can learn anything!</h3>
       <br>
       <br>
@@ -113,18 +122,19 @@
 
     <div class="row">
       <div class="column">
-        <h3 style="text-align: center;">Videos</h3>
+        <h4 style="text-align: center;">Videos</h4>
+        <a src="products">
         <img src="assets/images/VideoTutorial.gif" alt="Video tutorial" style="width:100%">
+      </a>
       </div>
       <div class="column">
-        <h3 style="text-align: center;">E-books</h3>
+        <h4 style="text-align: center;">E-books</h4>
+        <a src="products">
         <img src="assets/images/Bookmarks.gif" alt="E-books" style="width:100%">
+      </a>
       </div>
     </div>
   </div>
-
-  <hr>
-  
   <app-footer></app-footer>
  
   
