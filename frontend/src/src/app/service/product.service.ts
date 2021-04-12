@@ -19,5 +19,8 @@ export class ProductService {
       return this.http.get<Product[]>(this.environment.products);
   }
 
+  getProductsByType(productType){
+    return this.http.get<Product[]>(this.environment.products);
+  }
  
 }

@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   message: string;
   submitted = false;
   loginFailed = false;
-hide = true;
+isLoggedIn = false;
+
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -44,6 +45,7 @@ hide = true;
       this.authService.login(formData).subscribe(
         (res) => {
          this.router.navigateByUrl("/home");
+         localStorage.setItem("isLoggedIn", "true");
         },
         (error) => {
           this.loginFailed = true;

@@ -10,9 +10,9 @@ import { UserService } from '../service/user.service';
 })
 
 export class HomeComponent implements OnInit {
-    currentUser!: User;
+    // currentUser!: User;
     users: User[] = [];
-
+     
     constructor(private userService: UserService) {
         // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }

@@ -1,3 +1,4 @@
+<app-header> </app-header>
 <div class="card">
     <p-dataView #dv [value]="products" [paginator]="true" [rows]="9" filterBy="name"
                 [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
@@ -49,7 +50,7 @@
                     <div class="product-grid-item-bottom">
                         <span class="product-price">${{product.productPrice}}</span>
                         <!-- <p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>                       -->
-                        <p-button icon="pi pi-shopping-cart" ></p-button>
+                        <p-button icon="pi pi-shopping-cart" type="submit" (click)="buy(product)" ></p-button>
                     </div>
                 </div>
             </div>

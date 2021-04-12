@@ -1,8 +1,10 @@
+import { PaymentService } from './../service/payment.service';
 import {ProductService} from "../service/product.service";
 import {Component, OnInit} from "@angular/core";
 import {Product} from "../interfaces/product";
 import {SelectItem} from "primeng/api";
 import {PrimeNGConfig} from "primeng/api";
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
     selector: "app-products",
@@ -23,7 +25,8 @@ export class ProductsComponent implements OnInit {
 
     constructor(
         private productService: ProductService,
-        private primengConfig: PrimeNGConfig
+        private primengConfig: PrimeNGConfig,
+        private paymentService: PaymentService
     ) {
     }
 
@@ -52,6 +55,21 @@ export class ProductsComponent implements OnInit {
             this.sortOrder = 1;
             this.sortField = value;
         }
+    }
+
+
+    getProductsByType(productType){
+        this.productService.getProductsByType(productType);
+    }
+
+    
+    buy(product){
+        this.paymentService.makePayment(product.productPrice).subscribe(
+            res =>{
+                window.location = res.href;
+            }
+
+        )
     }
 
 }
