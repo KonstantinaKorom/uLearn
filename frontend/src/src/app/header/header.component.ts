@@ -10,7 +10,7 @@ import { AuthGuard } from '../auth.guard';
 export class HeaderComponent {
 
   logButton = ''
-
+ 
   constructor(private authGuard: AuthGuard, private router: Router) {
     if (authGuard.isLoggedIn()) {
       this.logButton = "Logout";
@@ -22,13 +22,23 @@ export class HeaderComponent {
 
   log() {
     if (this.authGuard.isLoggedIn()) {
-     
+
       localStorage.removeItem("isLoggedIn");
       window.location.href = "http://localhost:8080/logout";
-      this.logButton = "Login";
+      this.logButton = "Login";   
     } else {
       this.router.navigate(['./login']);
-      
     }
   }
+
+
+
+  // slashProducts(){
+  //   if(this.authGuard.isLoggedIn() === false){
+
+  //   }
+  // }
+  // prodButton(){
+  //   false -> this.authGuard.isLoggedIn()
+  // }
 }
