@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { ViewChild, ElementRef  } from '@angular/core';
-import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs';  
-import { catchError, map } from 'rxjs/operators';  
-import { UploadService } from '../service/upload.service';
+// import { ViewChild, ElementRef  } from '@angular/core';
+// import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
+// import { of } from 'rxjs';  
+// import { catchError, map } from 'rxjs/operators';  
+// import { UploadService } from '../service/upload.service';
 
 
 @Component({
