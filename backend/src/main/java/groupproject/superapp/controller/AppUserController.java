@@ -37,7 +37,6 @@ public class AppUserController {
         appUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
         appUser.setAppRole(roleService.getAppRoleByRoleName("USER"));
         userService.saveAppUser(appUser);
-//        log.info("saved User: {}", appUser);
         return ResponseEntity.ok(userDto);
     }
 

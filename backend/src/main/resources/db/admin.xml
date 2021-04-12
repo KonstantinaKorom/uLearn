@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="Manos Kordas" id="admin">
+        <sql>
+
+            INSERT INTO app_role (id, role_name)
+            VALUES ('5695992b-a207-4f10-afdc-f1d76883286a', 'USER');
+
+            INSERT INTO app_role (id, role_name)
+            VALUES ('5abc818c-9b75-11eb-a8b3-0242ac130003', 'ADMIN');
+
+
+            INSERT INTO app_user (id, first_name, last_name, username, password, email, status, role_id)
+            VALUES ('7611c773-a049-483e-ab0e-98125ab403a4', 'Admin', 'Admin', 'admin', '$2a$10$3ux3AkFocaxUwZ9NKc6zsOavTjQH20T7OGse3CocMaLtn3wMvFLya', 'admin@yahoo', '1', '5abc818c-9b75-11eb-a8b3-0242ac130003' );
+
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
